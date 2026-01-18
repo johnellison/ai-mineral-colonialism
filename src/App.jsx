@@ -47,6 +47,23 @@ const newsStories = [
   { date: 'Feb 5, 2025', title: 'Praxis Wants Freedom City in Greenland', source: 'InsideHook', url: 'https://www.insidehook.com/internet/peter-thiel-praxis-next-great-city-greenland', category: 'Praxis' },
 ];
 
+const peopleData = {
+  architects: [
+    { name: 'Jeff Bezos & Bill Gates', role: 'KoBold Metals Investors', desc: 'Billionaires betting on AI-driven mineral exploration to secure resources.', tags: ['Capital', 'Tech'] },
+    { name: 'Donald Trump', role: 'US President', desc: 'Seeking control of Venezuelan oil and Greenlandic minerals for US AI dominance.', tags: ['Government', 'Policy'] },
+    { name: 'Peter Thiel', role: 'Venture Capitalist', desc: 'Backing "Freedom Cities" as regulatory arbitrage zones for crypto and compute.', tags: ['Capital', 'Ideology'] },
+    { name: 'Sam Altman', role: 'Investor', desc: 'Funding the physical infrastructure required to achieve AGI scale.', tags: ['Tech', 'Capital'] },
+    { name: 'Dryden Brown', role: 'Praxis Co-Founder', desc: 'Lobbying for Greenlandic "independence" to build a sovereign crypto state.', tags: ['Ideology', 'Crypto'] },
+    { name: 'Ken Howery', role: 'Ambassador to Denmark', desc: 'Thiel associate appointed to facilitate US interests in Greenland.', tags: ['Government', 'Diplomacy'] },
+  ],
+  resistance: [
+    { name: 'Múte Bourup Egede', role: 'Prime Minister of Greenland', desc: 'Youngest PM in history. Explicitly opposes foreign control: "We do not want to be Americans."', tags: ['Sovereignty', 'Politics'] },
+    { name: 'Inuit Ataqatigiit', role: 'Ruling Party', desc: 'Won power on an anti-mining platform, banning uranium extracting and oil drilling.', tags: ['Politics', 'Environment'] },
+    { name: 'Indigenous Communities', role: 'Local Stewards', desc: 'Fighting contamination of fishing waters from legacy mining projects.', tags: ['Community', 'Justice'] },
+    { name: 'Environmental Orgs', role: 'Global Advocates', desc: 'Highlighting the contradiction of using fossil fuels to power "green" AI transitions.', tags: ['Environment', 'Climate'] },
+  ]
+};
+
 // Color palette - Paper White Theme
 const colors = {
   bg: '#fdfdfd',
@@ -241,7 +258,7 @@ export default function App() {
             </div>
           </div>
           <div style={{ display: 'flex', gap: 4 }}>
-            {['overview', 'minerals', 'supply-chain', 'news'].map(tab => (
+            {['overview', 'minerals', 'supply-chain', 'people', 'news'].map(tab => (
               <button
                 key={tab}
                 className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
@@ -517,6 +534,94 @@ export default function App() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* People Tab */}
+        {activeTab === 'people' && (
+          <div className="fade-in">
+            <div style={{ marginBottom: 32 }}>
+              <h2 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>The Key Players</h2>
+              <p style={{ color: colors.textMuted, fontSize: 14, marginTop: 8 }}>
+                The architects building the mineral supply chain vs. the resistance fighting for sovereignty
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+
+              {/* Architects Column */}
+              <div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 20, color: colors.text, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: 20 }}>🏗️</span> The Architects
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  {peopleData.architects.map((person, i) => (
+                    <div key={i} className="card fade-in" style={{ animationDelay: `${0.1 + i * 0.05}s` }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
+                        <h4 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{person.name}</h4>
+                        <span style={{ fontSize: 11, color: colors.textMuted, background: colors.surfaceLight, padding: '2px 8px', borderRadius: 4 }}>
+                          {person.role}
+                        </span>
+                      </div>
+                      <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5, margin: '8px 0 12px' }}>
+                        {person.desc}
+                      </p>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        {person.tags.map(tag => (
+                          <span key={tag} style={{
+                            fontSize: 10,
+                            padding: '2px 8px',
+                            background: colors.accentDim,
+                            color: colors.accent,
+                            borderRadius: 12,
+                            fontWeight: 500
+                          }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Resistance Column */}
+              <div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 20, color: colors.text, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: 20 }}>✊</span> The Resistance
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  {peopleData.resistance.map((person, i) => (
+                    <div key={i} className="card fade-in" style={{ animationDelay: `${0.1 + i * 0.05}s`, borderColor: i === 0 ? colors.critical : colors.border }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
+                        <h4 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{person.name}</h4>
+                        <span style={{ fontSize: 11, color: colors.textMuted, background: colors.surfaceLight, padding: '2px 8px', borderRadius: 4 }}>
+                          {person.role}
+                        </span>
+                      </div>
+                      <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5, margin: '8px 0 12px' }}>
+                        {person.desc}
+                      </p>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        {person.tags.map(tag => (
+                          <span key={tag} style={{
+                            fontSize: 10,
+                            padding: '2px 8px',
+                            background: tag === 'Sovereignty' ? `${colors.critical}22` : colors.surfaceLight,
+                            color: tag === 'Sovereignty' ? colors.critical : colors.textMuted,
+                            borderRadius: 12,
+                            fontWeight: 500
+                          }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
         )}
