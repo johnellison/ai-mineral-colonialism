@@ -47,20 +47,22 @@ const newsStories = [
   { date: 'Feb 5, 2025', title: 'Praxis Wants Freedom City in Greenland', source: 'InsideHook', url: 'https://www.insidehook.com/internet/peter-thiel-praxis-next-great-city-greenland', category: 'Praxis' },
 ];
 
+
 const peopleData = {
-  architects: [
-    { name: 'Jeff Bezos & Bill Gates', role: 'KoBold Metals Investors', desc: 'Billionaires betting on AI-driven mineral exploration to secure resources.', tags: ['Capital', 'Tech'] },
-    { name: 'Donald Trump', role: 'US President', desc: 'Seeking control of Venezuelan oil and Greenlandic minerals for US AI dominance.', tags: ['Government', 'Policy'] },
-    { name: 'Peter Thiel', role: 'Venture Capitalist', desc: 'Backing "Freedom Cities" as regulatory arbitrage zones for crypto and compute.', tags: ['Capital', 'Ideology'] },
-    { name: 'Sam Altman', role: 'Investor', desc: 'Funding the physical infrastructure required to achieve AGI scale.', tags: ['Tech', 'Capital'] },
-    { name: 'Dryden Brown', role: 'Praxis Co-Founder', desc: 'Lobbying for Greenlandic "independence" to build a sovereign crypto state.', tags: ['Ideology', 'Crypto'] },
-    { name: 'Ken Howery', role: 'Ambassador to Denmark', desc: 'Thiel associate appointed to facilitate US interests in Greenland.', tags: ['Government', 'Diplomacy'] },
+  colonizers: [
+    { name: 'Jeff Bezos', role: 'KoBold Investor', image: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Jeff_Bezos_2016.jpg', desc: 'Investing billions in Arctic mineral exploration to secure AI supply chains.', tags: ['Capital'] },
+    { name: 'Bill Gates', role: 'KoBold Investor', image: 'https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg', desc: 'Backing AI-driven mining to "solve" the critical minerals shortage.', tags: ['Capital'] },
+    { name: 'Donald Trump', role: 'US President', image: 'https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg', desc: 'Seeking control of Venezuelan oil and Greenlandic minerals for US dominance.', tags: ['Government'] },
+    { name: 'Peter Thiel', role: 'Venture Capitalist', image: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Peter_Thiel.jpg', desc: 'Backing "Freedom Cities" as regulatory arbitrage zones for crypto and compute.', tags: ['Ideology'] },
+    { name: 'Sam Altman', role: 'OpenAI CEO', image: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Sam_Altman_Flickr_2.jpg', desc: 'His demand for 7GW data centers drives the resource extraction logic.', tags: ['Tech'] },
+    { name: 'Dryden Brown', role: 'Praxis Co-Founder', image: 'https://pbs.twimg.com/profile_images/1587884488390885376/GzCqFfPZ_400x400.jpg', desc: 'Lobbying for Greenlandic "independence" to build a sovereign crypto state.', tags: ['Ideology'] },
+    { name: 'Ken Howery', role: 'Ambassador', image: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Kenneth_A._Howery_official_photo.jpg', desc: 'Thiel associate appointed to facilitate US interests in Greenland.', tags: ['Diplomacy'] },
   ],
   resistance: [
-    { name: 'Múte Bourup Egede', role: 'Prime Minister of Greenland', desc: 'Youngest PM in history. Explicitly opposes foreign control: "We do not want to be Americans."', tags: ['Sovereignty', 'Politics'] },
-    { name: 'Inuit Ataqatigiit', role: 'Ruling Party', desc: 'Won power on an anti-mining platform, banning uranium extracting and oil drilling.', tags: ['Politics', 'Environment'] },
-    { name: 'Indigenous Communities', role: 'Local Stewards', desc: 'Fighting contamination of fishing waters from legacy mining projects.', tags: ['Community', 'Justice'] },
-    { name: 'Environmental Orgs', role: 'Global Advocates', desc: 'Highlighting the contradiction of using fossil fuels to power "green" AI transitions.', tags: ['Environment', 'Climate'] },
+    { name: 'Múte Bourup Egede', role: 'Prime Minister', image: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/M%C3%BAte_Bourup_Egede_May_2021.jpg', desc: 'Explicitly opposes foreign control: "We do not want to be Americans."', tags: ['Sovereignty'] },
+    { name: 'Inuit Ataqatigiit', role: 'Ruling Party', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Inuit_Ataqatigiit_logo.svg/1024px-Inuit_Ataqatigiit_logo.svg.png', desc: 'Won power on an anti-mining platform, banning uranium extracting and oil drilling.', tags: ['Politics'] },
+    { name: 'Indigenous Communities', role: 'Stewards', image: null, desc: 'Fighting contamination of fishing waters from legacy mining projects.', tags: ['Justice'] },
+    { name: 'Environmental Orgs', role: 'Advocates', image: null, desc: 'Highlighting the massive fossil fuel costs of "green" AI transitions.', tags: ['Climate'] },
   ]
 };
 
@@ -83,6 +85,7 @@ const colors = {
   high: '#f59e0b',
   medium: '#3b82f6',
 };
+
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -544,30 +547,45 @@ export default function App() {
             <div style={{ marginBottom: 32 }}>
               <h2 style={{ fontSize: 24, fontWeight: 700, margin: 0 }}>The Key Players</h2>
               <p style={{ color: colors.textMuted, fontSize: 14, marginTop: 8 }}>
-                The architects building the mineral supply chain vs. the resistance fighting for sovereignty
+                The <strong style={{ color: colors.text }}>Colonizers</strong> building the mineral supply chain vs. the <strong style={{ color: colors.critical }}>Resistance</strong> fighting for sovereignty
               </p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
 
-              {/* Architects Column */}
+              {/* Colonizers Column */}
               <div>
                 <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 20, color: colors.text, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span style={{ fontSize: 20 }}>🏗️</span> The Architects
+                  <span style={{ fontSize: 20 }}>🏗️</span> The Colonizers
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  {peopleData.architects.map((person, i) => (
+                  {peopleData.colonizers.map((person, i) => (
                     <div key={i} className="card fade-in" style={{ animationDelay: `${0.1 + i * 0.05}s` }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
-                        <h4 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{person.name}</h4>
-                        <span style={{ fontSize: 11, color: colors.textMuted, background: colors.surfaceLight, padding: '2px 8px', borderRadius: 4 }}>
-                          {person.role}
-                        </span>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 12 }}>
+                        {person.image ? (
+                          <img
+                            src={person.image}
+                            alt={person.name}
+                            style={{ width: 48, height: 48, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${colors.border}` }}
+                          />
+                        ) : (
+                          <div style={{ width: 48, height: 48, borderRadius: '50%', background: colors.surfaceLight, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, border: `1px solid ${colors.border}` }}>
+                            👤
+                          </div>
+                        )}
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <h4 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{person.name}</h4>
+                            <span style={{ fontSize: 11, color: colors.textMuted, background: colors.surfaceLight, padding: '2px 8px', borderRadius: 4, whiteSpace: 'nowrap' }}>
+                              {person.role}
+                            </span>
+                          </div>
+                          <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5, margin: '8px 0 0' }}>
+                            {person.desc}
+                          </p>
+                        </div>
                       </div>
-                      <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5, margin: '8px 0 12px' }}>
-                        {person.desc}
-                      </p>
-                      <div style={{ display: 'flex', gap: 6 }}>
+                      <div style={{ display: 'flex', gap: 6, marginLeft: 64 }}>
                         {person.tags.map(tag => (
                           <span key={tag} style={{
                             fontSize: 10,
@@ -588,22 +606,37 @@ export default function App() {
 
               {/* Resistance Column */}
               <div>
-                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 20, color: colors.text, display: 'flex', alignItems: 'center', gap: 8 }}>
+                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 20, color: colors.critical, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ fontSize: 20 }}>✊</span> The Resistance
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                   {peopleData.resistance.map((person, i) => (
                     <div key={i} className="card fade-in" style={{ animationDelay: `${0.1 + i * 0.05}s`, borderColor: i === 0 ? colors.critical : colors.border }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
-                        <h4 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{person.name}</h4>
-                        <span style={{ fontSize: 11, color: colors.textMuted, background: colors.surfaceLight, padding: '2px 8px', borderRadius: 4 }}>
-                          {person.role}
-                        </span>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 12 }}>
+                        {person.image ? (
+                          <img
+                            src={person.image}
+                            alt={person.name}
+                            style={{ width: 48, height: 48, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${colors.border}` }}
+                          />
+                        ) : (
+                          <div style={{ width: 48, height: 48, borderRadius: '50%', background: colors.surfaceLight, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, border: `1px solid ${colors.border}` }}>
+                            ✊
+                          </div>
+                        )}
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <h4 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{person.name}</h4>
+                            <span style={{ fontSize: 11, color: colors.textMuted, background: colors.surfaceLight, padding: '2px 8px', borderRadius: 4, whiteSpace: 'nowrap' }}>
+                              {person.role}
+                            </span>
+                          </div>
+                          <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5, margin: '8px 0 0' }}>
+                            {person.desc}
+                          </p>
+                        </div>
                       </div>
-                      <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.5, margin: '8px 0 12px' }}>
-                        {person.desc}
-                      </p>
-                      <div style={{ display: 'flex', gap: 6 }}>
+                      <div style={{ display: 'flex', gap: 6, marginLeft: 64 }}>
                         {person.tags.map(tag => (
                           <span key={tag} style={{
                             fontSize: 10,
