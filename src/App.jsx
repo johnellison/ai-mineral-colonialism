@@ -244,7 +244,7 @@ export default function App() {
         backdropFilter: 'blur(8px)',
         zIndex: 100,
       }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src="/logo.jpg" alt="Regenera" style={{ height: 48, width: 48, borderRadius: 8, marginRight: 16, objectFit: 'contain' }} />
             <div>
@@ -262,17 +262,48 @@ export default function App() {
               </p>
             </div>
           </div>
-          <div style={{ display: 'flex', gap: 4 }}>
-            {['overview', 'minerals', 'supply-chain', 'people', 'news'].map(tab => (
-              <button
-                key={tab}
-                className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-                style={{ borderRadius: tab === 'overview' ? '8px 0 0 8px' : tab === 'news' ? '0 8px 8px 0' : 0 }}
-              >
-                {tab.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
-              </button>
-            ))}
+          <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 4 }}>
+              {['overview', 'minerals', 'supply-chain', 'people', 'news'].map(tab => (
+                <button
+                  key={tab}
+                  className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
+                  onClick={() => setActiveTab(tab)}
+                  style={{ borderRadius: tab === 'overview' ? '8px 0 0 8px' : tab === 'news' ? '0 8px 8px 0' : 0 }}
+                >
+                  {tab.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                </button>
+              ))}
+            </div>
+            <a
+              href="https://www.regenera.xyz/p/the-mineral-colonialism-powering"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: 'none',
+                background: colors.text,
+                color: colors.surface,
+                padding: '10px 16px',
+                borderRadius: 8,
+                fontSize: 14,
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                transition: 'all 0.2s',
+                border: `1px solid ${colors.text}`
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = colors.text;
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = colors.text;
+                e.currentTarget.style.color = colors.surface;
+              }}
+            >
+              Read Article ↗
+            </a>
           </div>
         </div>
       </header>
@@ -300,25 +331,27 @@ export default function App() {
 
             {/* Main Chart */}
             <div className="card" style={{ marginBottom: 40 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
-                <div>
-                  <h2 style={{ fontSize: 18, fontWeight: 600, margin: 0 }}>AI Data Center Power Demand Surge</h2>
-                  <p style={{ color: colors.textMuted, fontSize: 14, marginTop: 4 }}>
-                    AI workloads projected to reach 37% of total data center demand by 2030
-                  </p>
-                </div>
-                <div style={{ display: 'flex', gap: 20 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <div style={{ width: 12, height: 12, background: colors.ai, borderRadius: 2 }} />
-                    <span style={{ fontSize: 13, color: colors.textMuted }}>AI-Specific</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 24 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 16 }}>
+                  <div>
+                    <h2 style={{ fontSize: 18, fontWeight: 600, margin: 0 }}>AI Data Center Power Demand Surge</h2>
+                    <p style={{ color: colors.textMuted, fontSize: 14, marginTop: 4 }}>
+                      AI workloads projected to reach 37% of total data center demand by 2030
+                    </p>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <div style={{ width: 12, height: 12, background: colors.cloud, borderRadius: 2 }} />
-                    <span style={{ fontSize: 13, color: colors.textMuted }}>Cloud</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <div style={{ width: 12, height: 12, background: colors.traditional, borderRadius: 2 }} />
-                    <span style={{ fontSize: 13, color: colors.textMuted }}>Traditional</span>
+                  <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ width: 12, height: 12, background: colors.ai, borderRadius: 2 }} />
+                      <span style={{ fontSize: 13, color: colors.textMuted }}>AI-Specific</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ width: 12, height: 12, background: colors.cloud, borderRadius: 2 }} />
+                      <span style={{ fontSize: 13, color: colors.textMuted }}>Cloud</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ width: 12, height: 12, background: colors.traditional, borderRadius: 2 }} />
+                      <span style={{ fontSize: 13, color: colors.textMuted }}>Traditional</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -406,7 +439,7 @@ export default function App() {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
-              <div style={{ display: 'flex', gap: 24, marginTop: 16, justifyContent: 'center' }}>
+              <div style={{ display: 'flex', gap: 24, marginTop: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <div style={{ width: 12, height: 12, background: colors.critical, borderRadius: 2 }} />
                   <span style={{ fontSize: 12, color: colors.textMuted }}>Critical (85%+)</span>
@@ -423,53 +456,55 @@ export default function App() {
             </div>
 
             {/* Minerals Table */}
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '140px 1fr 100px 100px',
-                padding: '14px 20px',
-                background: colors.surfaceLight,
-                borderBottom: `1px solid ${colors.border}`,
-                fontWeight: 600,
-                fontSize: 12,
-                color: colors.textMuted,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-              }}>
-                <span>Mineral</span>
-                <span>AI Applications</span>
-                <span>China %</span>
-                <span>Importance</span>
+            <div className="card" style={{ padding: 0, overflowX: 'auto' }}>
+              <div style={{ minWidth: 600 }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '140px 1fr 100px 100px',
+                  padding: '14px 20px',
+                  background: colors.surfaceLight,
+                  borderBottom: `1px solid ${colors.border}`,
+                  fontWeight: 600,
+                  fontSize: 12,
+                  color: colors.textMuted,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                }}>
+                  <span>Mineral</span>
+                  <span>AI Applications</span>
+                  <span>China %</span>
+                  <span>Importance</span>
+                </div>
+                {mineralsData.map((m, i) => (
+                  <div
+                    key={i}
+                    className="mineral-row"
+                    onClick={() => setSelectedMineral(selectedMineral === i ? null : i)}
+                    style={{ background: selectedMineral === i ? colors.surfaceLight : 'transparent' }}
+                  >
+                    <span style={{ fontWeight: 600 }}>{m.mineral}</span>
+                    <span style={{ color: colors.textMuted, fontSize: 13 }}>{m.application}</span>
+                    <span style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: m.china >= 85 ? colors.critical : m.china >= 55 ? colors.warning : colors.text,
+                      fontWeight: 600,
+                    }}>{m.china}%</span>
+                    <span>
+                      <span className="importance-badge" style={{
+                        background: m.importance === 'CRITICAL' ? `${colors.critical}22` : m.importance === 'HIGH' ? `${colors.warning}22` : `${colors.cloud}22`,
+                        color: m.importance === 'CRITICAL' ? colors.critical : m.importance === 'HIGH' ? colors.warning : colors.cloud,
+                      }}>{m.importance}</span>
+                    </span>
+                  </div>
+                ))}
+                {selectedMineral !== null && (
+                  <div style={{ padding: 20, background: colors.surfaceLight, borderTop: `1px solid ${colors.border}` }}>
+                    <p style={{ fontSize: 13, color: colors.textMuted, margin: 0 }}>
+                      <strong style={{ color: colors.accent }}>Greenland Status:</strong> {mineralsData[selectedMineral].greenland}
+                    </p>
+                  </div>
+                )}
               </div>
-              {mineralsData.map((m, i) => (
-                <div
-                  key={i}
-                  className="mineral-row"
-                  onClick={() => setSelectedMineral(selectedMineral === i ? null : i)}
-                  style={{ background: selectedMineral === i ? colors.surfaceLight : 'transparent' }}
-                >
-                  <span style={{ fontWeight: 600 }}>{m.mineral}</span>
-                  <span style={{ color: colors.textMuted, fontSize: 13 }}>{m.application}</span>
-                  <span style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: m.china >= 85 ? colors.critical : m.china >= 55 ? colors.warning : colors.text,
-                    fontWeight: 600,
-                  }}>{m.china}%</span>
-                  <span>
-                    <span className="importance-badge" style={{
-                      background: m.importance === 'CRITICAL' ? `${colors.critical}22` : m.importance === 'HIGH' ? `${colors.warning}22` : `${colors.cloud}22`,
-                      color: m.importance === 'CRITICAL' ? colors.critical : m.importance === 'HIGH' ? colors.warning : colors.cloud,
-                    }}>{m.importance}</span>
-                  </span>
-                </div>
-              ))}
-              {selectedMineral !== null && (
-                <div style={{ padding: 20, background: colors.surfaceLight, borderTop: `1px solid ${colors.border}` }}>
-                  <p style={{ fontSize: 13, color: colors.textMuted, margin: 0 }}>
-                    <strong style={{ color: colors.accent }}>Greenland Status:</strong> {mineralsData[selectedMineral].greenland}
-                  </p>
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -484,7 +519,7 @@ export default function App() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 40, marginBottom: 40 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, marginBottom: 40 }}>
               {supplyChain.map((step, i) => (
                 <div key={i} className="supply-step fade-in" style={{ animationDelay: `${0.1 + i * 0.1}s` }}>
                   <div style={{
@@ -522,7 +557,7 @@ export default function App() {
               <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16, color: colors.accent }}>
                 🌍 The Resistance
               </h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
                 <div>
                   <h4 style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Indigenous Opposition</h4>
                   <p style={{ fontSize: 13, color: colors.textMuted, lineHeight: 1.6 }}>
@@ -553,7 +588,7 @@ export default function App() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: 40 }}>
 
               {/* Colonizers Column */}
               <div>
@@ -673,7 +708,7 @@ export default function App() {
               </div>
             </div>
 
-            <div style={{ marginBottom: 24 }}>
+            <div style={{ marginBottom: 24, overflowX: 'auto', whiteSpace: 'nowrap', paddingBottom: 8 }}>
               {['all', 'Energy', 'Billionaires', 'Mining', 'Praxis', 'Policy'].map(filter => (
                 <button
                   key={filter}
@@ -685,7 +720,7 @@ export default function App() {
               ))}
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
               {filteredNews.map((story, i) => (
                 <a
                   key={i}
@@ -715,7 +750,7 @@ export default function App() {
             {/* Key Data Points */}
             <div className="card" style={{ marginTop: 32 }}>
               <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 20 }}>Key Data Points</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
                 <div>
                   <h4 style={{ fontSize: 13, color: colors.textMuted, marginBottom: 12 }}>Energy & AI Demand</h4>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -771,20 +806,22 @@ export default function App() {
         marginTop: 60,
         background: colors.surfaceLight
       }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <p style={{ fontSize: 13, color: colors.textMuted, margin: 0 }}>
-              Research compiled for <a href="https://regenera.substack.com" style={{ color: colors.accent }}>Regenera</a> by John Ellison
-            </p>
-            <p style={{ fontSize: 12, color: colors.textMuted, margin: '8px 0 0', opacity: 0.7 }}>
-              Data sources: Goldman Sachs, CSIS, Reuters, Forbes, Truthout, New Statesman, AIM Multiple
-            </p>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <p style={{ fontSize: 13, color: colors.textMuted, margin: 0 }}>
-              Building regenerative futures at the intersection of AI, climate & consciousness
-            </p>
-            <p style={{ color: colors.accent, fontSize: 14, margin: '8px 0 0' }}>Peace ✌️</p>
+        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20 }}>
+            <div>
+              <p style={{ fontSize: 13, color: colors.textMuted, margin: 0 }}>
+                Research compiled for <a href="https://regenera.substack.com" style={{ color: colors.accent }}>Regenera</a> by John Ellison
+              </p>
+              <p style={{ fontSize: 12, color: colors.textMuted, margin: '8px 0 0', opacity: 0.7 }}>
+                Data sources: Goldman Sachs, CSIS, Reuters, Forbes, Truthout, New Statesman, AIM Multiple
+              </p>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: 13, color: colors.textMuted, margin: 0 }}>
+                Building regenerative futures at the intersection of AI, climate & consciousness
+              </p>
+              <p style={{ color: colors.accent, fontSize: 14, margin: '8px 0 0' }}>Peace ✌️</p>
+            </div>
           </div>
         </div>
       </footer>
