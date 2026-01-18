@@ -48,19 +48,20 @@ const newsStories = [
 ];
 
 
+
 const peopleData = {
   colonizers: [
-    { name: 'Jeff Bezos', role: 'KoBold Investor', image: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Jeff_Bezos_2016.jpg', desc: 'Investing billions in Arctic mineral exploration to secure AI supply chains.', tags: ['Capital'] },
-    { name: 'Bill Gates', role: 'KoBold Investor', image: 'https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg', desc: 'Backing AI-driven mining to "solve" the critical minerals shortage.', tags: ['Capital'] },
-    { name: 'Donald Trump', role: 'US President', image: 'https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg', desc: 'Seeking control of Venezuelan oil and Greenlandic minerals for US dominance.', tags: ['Government'] },
-    { name: 'Peter Thiel', role: 'Venture Capitalist', image: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Peter_Thiel.jpg', desc: 'Backing "Freedom Cities" as regulatory arbitrage zones for crypto and compute.', tags: ['Ideology'] },
-    { name: 'Sam Altman', role: 'OpenAI CEO', image: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Sam_Altman_Flickr_2.jpg', desc: 'His demand for 7GW data centers drives the resource extraction logic.', tags: ['Tech'] },
-    { name: 'Dryden Brown', role: 'Praxis Co-Founder', image: 'https://pbs.twimg.com/profile_images/1587884488390885376/GzCqFfPZ_400x400.jpg', desc: 'Lobbying for Greenlandic "independence" to build a sovereign crypto state.', tags: ['Ideology'] },
-    { name: 'Ken Howery', role: 'Ambassador', image: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Kenneth_A._Howery_official_photo.jpg', desc: 'Thiel associate appointed to facilitate US interests in Greenland.', tags: ['Diplomacy'] },
+    { name: 'Jeff Bezos', role: 'KoBold Investor', image: null, desc: 'Investing billions in Arctic mineral exploration to secure AI supply chains.', tags: ['Capital'] },
+    { name: 'Bill Gates', role: 'KoBold Investor', image: '/images/bill-gates.jpg', desc: 'Backing AI-driven mining to "solve" the critical minerals shortage.', tags: ['Capital'] },
+    { name: 'Donald Trump', role: 'US President', image: '/images/donald-trump.jpg', desc: 'Seeking control of Venezuelan oil and Greenlandic minerals for US dominance.', tags: ['Government'] },
+    { name: 'Peter Thiel', role: 'Venture Capitalist', image: null, desc: 'Backing "Freedom Cities" as regulatory arbitrage zones for crypto and compute.', tags: ['Ideology'] },
+    { name: 'Sam Altman', role: 'OpenAI CEO', image: null, desc: 'His demand for 7GW data centers drives the resource extraction logic.', tags: ['Tech'] },
+    { name: 'Dryden Brown', role: 'Praxis Co-Founder', image: null, desc: 'Lobbying for Greenlandic "independence" to build a sovereign crypto state.', tags: ['Ideology'] },
+    { name: 'Ken Howery', role: 'Ambassador', image: null, desc: 'Thiel associate appointed to facilitate US interests in Greenland.', tags: ['Diplomacy'] },
   ],
   resistance: [
-    { name: 'Múte Bourup Egede', role: 'Prime Minister', image: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/M%C3%BAte_Bourup_Egede_May_2021.jpg', desc: 'Explicitly opposes foreign control: "We do not want to be Americans."', tags: ['Sovereignty'] },
-    { name: 'Inuit Ataqatigiit', role: 'Ruling Party', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Inuit_Ataqatigiit_logo.svg/1024px-Inuit_Ataqatigiit_logo.svg.png', desc: 'Won power on an anti-mining platform, banning uranium extracting and oil drilling.', tags: ['Politics'] },
+    { name: 'Múte Bourup Egede', role: 'Prime Minister', image: null, desc: 'Explicitly opposes foreign control: "We do not want to be Americans."', tags: ['Sovereignty'] },
+    { name: 'Inuit Ataqatigiit', role: 'Ruling Party', image: null, desc: 'Won power on an anti-mining platform, banning uranium extracting and oil drilling.', tags: ['Politics'] },
     { name: 'Indigenous Communities', role: 'Stewards', image: null, desc: 'Fighting contamination of fishing waters from legacy mining projects.', tags: ['Justice'] },
     { name: 'Environmental Orgs', role: 'Advocates', image: null, desc: 'Highlighting the massive fossil fuel costs of "green" AI transitions.', tags: ['Climate'] },
   ]
